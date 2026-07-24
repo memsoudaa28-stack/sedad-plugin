@@ -1,0 +1,41 @@
+{
+  "name": "NexConnect Payment",
+  "version": "1.0.0",
+  "description": "Intégration passerelle de paiement NexConnect pour Ordering/Deliveryli",
+  "main": "index.js",
+  "author": "Ton Nom",
+  "type": "payment",
+  "hooks": [
+    "beforePlaceOrder",
+    "afterPlaceOrder",
+    "paymentConfirmation"
+  ],
+  "settings": [
+    {
+      "key": "nexconnect_token",
+      "label": "Token d'autorisation NexConnect",
+      "type": "password",
+      "required": true
+    },
+    {
+      "key": "nexconnect_api_url",
+      "label": "URL de base de l'API NexConnect",
+      "type": "text",
+      "required": true,
+      "default": "https://nexpay-653e0b7d7b24.herokuapp.com"
+    },
+    {
+      "key": "nexconnect_code_abonnement",
+      "label": "Code d'abonnement NexConnect",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "nexconnect_payment_type",
+      "label": "Type de paiement",
+      "type": "select",
+      "options": ["Wallet", "Carte"],
+      "default": "Wallet"
+    }
+  ]
+}
