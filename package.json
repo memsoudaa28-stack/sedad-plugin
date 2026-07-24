@@ -1,0 +1,9 @@
+{
+  "name": "nexconnect-ordering-plugin",
+  "version": "1.0.0",
+  "description": "Plugin NexConnect pour Ordering",
+  "main": "index.js",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
