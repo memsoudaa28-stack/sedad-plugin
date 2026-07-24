@@ -1,41 +1,41 @@
 {
   "name": "NexConnect Payment",
   "version": "1.0.0",
-  "description": "Intégration passerelle de paiement NexConnect pour Ordering/Deliveryli",
-  "main": "index.js",
-  "author": "Ton Nom",
+  "description": "Intégration passerelle de paiement NexConnect",
   "type": "payment",
+  "main": "index.js",
+  "author": "memsoudaa28-stack",
+  "enabled": true,
+  "settings_url": "settings.json",
   "hooks": [
     "beforePlaceOrder",
     "afterPlaceOrder",
     "paymentConfirmation"
   ],
-  "settings": [
-    {
-      "key": "nexconnect_token",
-      "label": "Token d'autorisation NexConnect",
+  "settings": {
+    "nexconnect_token": {
+      "label": "Token d'autorisation",
       "type": "password",
-      "required": true
+      "required": true,
+      "value": ""
     },
-    {
-      "key": "nexconnect_api_url",
-      "label": "URL de base de l'API NexConnect",
+    "nexconnect_api_url": {
+      "label": "URL API NexConnect",
       "type": "text",
       "required": true,
-      "default": "https://nexpay-653e0b7d7b24.herokuapp.com"
+      "value": "https://nexpay-653e0b7d7b24.herokuapp.com"
     },
-    {
-      "key": "nexconnect_code_abonnement",
-      "label": "Code d'abonnement NexConnect",
+    "nexconnect_code_abonnement": {
+      "label": "Code abonnement",
       "type": "text",
-      "required": true
+      "required": true,
+      "value": ""
     },
-    {
-      "key": "nexconnect_payment_type",
+    "nexconnect_payment_type": {
       "label": "Type de paiement",
       "type": "select",
       "options": ["Wallet", "Carte"],
-      "default": "Wallet"
+      "value": "Wallet"
     }
-  ]
+  }
 }
