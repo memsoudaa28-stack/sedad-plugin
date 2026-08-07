@@ -64,3 +64,20 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`NexConnect plugin running on port ${PORT}`);
 });
+// Mock NexConnect pour tests
+app.post("/mock/demande_paiement", (req, res) => {
+  console.log("[MOCK] Demande paiement reçue:", req.body);
+  return res.status(200).json({
+    code: 200,
+    Message: "Succès",
+    code_paiement: "TEST-CODE-123"
+  });
+});
+
+app.post("/mock/consultation_statut", (req, res) => {
+  return res.status(200).json({
+    code: 200,
+    statut: "success",
+    numero_recu: req.body.numero_recu
+  });
+});
