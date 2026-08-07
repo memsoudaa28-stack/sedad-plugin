@@ -14,10 +14,8 @@ module.exports = async (req, res) => {
       || "https://nexpay-653e0b7d7b24.herokuapp.com";
     const PAYMENT_TYPE = credentials.payment_type || "Wallet";
 
-    // id_facture minimum 8 caractères
     const id_facture = String(cart.uuid).substring(0, 20);
 
-    // Appel API NexConnect
     const nexRes = await fetch(`${API_URL}/demande_paiement`, {
       method: "POST",
       headers: {
@@ -46,18 +44,18 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Status 2 = en attente (Flow C asynchrone)
     return res.status(200).json({
       error: false,
       result: {
         status: 2,
         pay_reference: id_facture,
         data: {
-          code_paiement: nexData.code_paiement,
-          cart_uuid: cart.uuid,
-          user_id: cart.user_id,
-        },
-      },
+          action: {
+            type: "redirect",
+            redirect_url: `https://sedad-3j5x.onrender.com/public/index.html?montant=${cart.balance || cart.total}&currency=${data.currency}&cart_uuid=${cart.uuid}`
+          }
+        }
+      }
     });
 
   } catch (err) {
