@@ -10,7 +10,36 @@
       "name": "NexConnect",
       "gateway": "nexconnect",
       "version": "v1",
-      "data_template": "[{\"name\":\"Token API\",\"key\":\"nexconnect_token\",\"type\":\"text\",\"required\":true},{\"name\":\"Code Abonnement\",\"key\":\"code_abonnement\",\"type\":\"text\",\"required\":true},{\"name\":\"URL API\",\"key\":\"api_url\",\"type\":\"text\",\"required\":true,\"default_value\":\"https://nexpay-653e0b7d7b24.herokuapp.com\"},{\"name\":\"Type Paiement\",\"key\":\"payment_type\",\"type\":\"text\",\"required\":true,\"default_value\":\"Wallet\"}]"
+      "data_template": [
+        {
+          "name": "Token API",
+          "key": "nexconnect_token",
+          "type": "text",
+          "required": true,
+          "default_value": ""
+        },
+        {
+          "name": "Code Abonnement",
+          "key": "code_abonnement",
+          "type": "text",
+          "required": true,
+          "default_value": ""
+        },
+        {
+          "name": "URL API",
+          "key": "api_url",
+          "type": "text",
+          "required": true,
+          "default_value": "https://nexpay-653e0b7d7b24.herokuapp.com"
+        },
+        {
+          "name": "Type Paiement",
+          "key": "payment_type",
+          "type": "text",
+          "required": true,
+          "default_value": "Wallet"
+        }
+      ]
     }
   ],
   "configs": [
