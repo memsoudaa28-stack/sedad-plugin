@@ -1,7 +1,8 @@
-// index.js
 const express = require("express");
 const app = express();
+
 app.use(express.json());
+app.use(express.static("public"));
 
 // Routes hooks Ordering
 app.post("/hooks/payments/pay", require("./hooks/payments/pay"));
@@ -19,7 +20,6 @@ app.post("/callback/nexconnect", async (req, res) => {
   } = req.body;
 
   try {
-    // Confirmer le cart vers Ordering
     await fetch(
       `https://apiv4.ordering.co/v400/en/project/carts/${id_facture}/confirm`,
       {
@@ -37,12 +37,16 @@ app.post("/callback/nexconnect", async (req, res) => {
       }
     );
 
-    // IMPORTANT : retourner 200 à NexConnect
     return res.status(200).json({ status: "ok" });
 
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
+});
+
+// Route config.json
+app.get("/config.json", (req, res) => {
+  res.sendFile(__dirname + "/config.json");
 });
 
 const PORT = process.env.PORT || 3000;
