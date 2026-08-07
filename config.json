@@ -12,7 +12,7 @@
       "gateway": "nexconnect",
       "version": "v1",
       "featured": "[]",
-      "data_template": "[{\"name\":\"Logo\",\"key\":\"image\",\"type\":\"image\",\"required\":false,\"default_value\":\"\",\"description\":\"Logo shown at checkout\",\"editable\":false}]",
+      "data_template": "[{\"name\":\"Logo\",\"key\":\"image\",\"type\":\"image\",\"required\":false,\"default_value\":\"https:sedad-3j5x.onrender.com/images/sedad.jpeg\",\"description\":\"Logo shown at checkout\",\"editable\":false}]",
       "data": "{\"image\":\"\"}"
     }
   ],
