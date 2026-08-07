@@ -1,8 +1,9 @@
 {
   "name": "NexConnect Payment",
   "key": "nexconnect",
-  "description": "Intégration passerelle de paiement NexConnect pour Sedad Bank",
+  "description": "Plugin pour la passerelle de paiement NexConnect - Sedad Bank",
   "version": "1.0.0",
+  "author": "Sedad",
   "integration_type": "payment_method",
   "models": [
     {
@@ -10,60 +11,85 @@
       "name": "NexConnect",
       "gateway": "nexconnect",
       "version": "v1",
-      "data_template": [
-        {
-          "name": "Token API",
-          "key": "nexconnect_token",
-          "type": "text",
-          "required": true,
-          "default_value": ""
-        },
-        {
-          "name": "Code Abonnement",
-          "key": "code_abonnement",
-          "type": "text",
-          "required": true,
-          "default_value": ""
-        },
-        {
-          "name": "URL API",
-          "key": "api_url",
-          "type": "text",
-          "required": true,
-          "default_value": "https://nexpay-653e0b7d7b24.herokuapp.com"
-        },
-        {
-          "name": "Type Paiement",
-          "key": "payment_type",
-          "type": "text",
-          "required": true,
-          "default_value": "Wallet"
-        }
-      ]
-    }
-  ],
-  "configs": [
-    {
-      "name": "Sandbox Mode",
-      "key": "sandbox_mode",
-      "default_value": "0",
-      "type": 2
+      "featured": "[]",
+      "data_template": "[{\"name\":\"Logo\",\"key\":\"image\",\"type\":\"image\",\"required\":false,\"default_value\":\"\",\"description\":\"Logo shown at checkout\",\"editable\":false}]",
+      "data": "{\"image\":\"\"}"
     }
   ],
   "hooks": [
     {
       "type": "filter",
       "hook": "paymethod_nexconnect_pay",
-      "name": "NexConnect Pay",
+      "name": "NexConnect payment",
+      "description": "Filter for NexConnect payment",
       "path": "/hooks/payments/pay",
       "delay": 0
     },
     {
       "type": "filter",
       "hook": "paymethod_nexconnect_confirm",
-      "name": "NexConnect Confirm",
+      "name": "NexConnect payment confirm",
+      "description": "Filter for NexConnect payment confirm",
       "path": "/hooks/payments/confirm",
       "delay": 0
     }
-  ]
+  ],
+  "configs": [
+    {
+      "name": "Token API NexConnect",
+      "key": "nexconnect_token",
+      "description": "Token d'autorisation Bearer fourni par NexConnect",
+      "default_value": "",
+      "public": false,
+      "type": 7,
+      "customizable": false,
+      "hidden": false,
+      "options": [],
+      "can_replaced_by_businesses": true,
+      "can_replaced_by_sites": false
+    },
+    {
+      "name": "Code Abonnement",
+      "key": "code_abonnement",
+      "description": "Code d'abonnement NexConnect",
+      "default_value": "",
+      "public": false,
+      "type": 1,
+      "customizable": false,
+      "hidden": false,
+      "options": [],
+      "can_replaced_by_businesses": true,
+      "can_replaced_by_sites": false
+    },
+    {
+      "name": "URL API NexConnect",
+      "key": "api_url",
+      "description": "URL de base de l'API NexConnect",
+      "default_value": "https://nexpay-653e0b7d7b24.herokuapp.com",
+      "public": false,
+      "type": 1,
+      "customizable": false,
+      "hidden": false,
+      "options": [],
+      "can_replaced_by_businesses": true,
+      "can_replaced_by_sites": false
+    },
+    {
+      "name": "Type Paiement",
+      "key": "payment_type",
+      "description": "Type de paiement : Wallet ou Carte",
+      "default_value": "Wallet",
+      "public": false,
+      "type": 2,
+      "customizable": false,
+      "hidden": false,
+      "options": [
+        { "value": "Wallet", "text": "Wallet" },
+        { "value": "Carte", "text": "Carte" }
+      ],
+      "can_replaced_by_businesses": true,
+      "can_replaced_by_sites": false
+    }
+  ],
+  "after_install_url": "https://sedad-3j5x.onrender.com/api/after_install"
 }
