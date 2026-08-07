@@ -1,6 +1,8 @@
 {
   "name": "NexConnect Payment",
   "key": "nexconnect",
+  "description": "Intégration passerelle de paiement NexConnect pour Sedad Bank",
+  "version": "1.0.0",
   "integration_type": "payment_method",
   "models": [
     {
