@@ -22,6 +22,12 @@ app.get("/configs", (req, res) => {
   res.sendFile(__dirname + "/config.json");
 });
 
+// After install
+app.post("/api/after_install", (req, res) => {
+  console.log("[NexConnect] Plugin installé :", req.body);
+  res.status(200).json({ success: true });
+});
+
 // Hooks paiement
 app.post("/hooks/payments/pay", require("./hooks/payments/pay"));
 app.post("/hooks/payments/confirm", require("./hooks/payments/confirm"));
@@ -38,7 +44,12 @@ app.post("/callback/nexconnect", async (req, res) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          nexconnect_data: { status: "success", numero_recu, id_transaction, montant },
+          nexconnect_data: {
+            status: "success",
+            numero_recu,
+            id_transaction,
+            montant,
+          },
           user_id: req.body.user_id,
         }),
       }
