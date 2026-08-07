@@ -9,9 +9,24 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+// Routes config pour Ordering
+app.get("/config.json", (req, res) => {
+  res.sendFile(__dirname + "/config.json");
+});
+
+app.get("/settings", (req, res) => {
+  res.sendFile(__dirname + "/config.json");
+});
+
+app.get("/configs", (req, res) => {
+  res.sendFile(__dirname + "/config.json");
+});
+
+// Hooks paiement
 app.post("/hooks/payments/pay", require("./hooks/payments/pay"));
 app.post("/hooks/payments/confirm", require("./hooks/payments/confirm"));
 
+// Callback NexConnect
 app.post("/callback/nexconnect", async (req, res) => {
   const fetch = require("node-fetch");
   const { id_facture, id_transaction, numero_recu, montant } = req.body;
@@ -32,10 +47,6 @@ app.post("/callback/nexconnect", async (req, res) => {
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
-});
-
-app.get("/config.json", (req, res) => {
-  res.sendFile(__dirname + "/config.json");
 });
 
 const PORT = process.env.PORT || 3000;
