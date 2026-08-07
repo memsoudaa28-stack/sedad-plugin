@@ -4,15 +4,27 @@ const fetch = require("node-fetch");
 module.exports = async (req, res) => {
   try {
     const { data, user } = req.body;
-
     const cart = data.cart;
-    const credentials = data.paymethod_credential.data;
 
-    const TOKEN = credentials.nexconnect_token;
-    const CODE_ABONNEMENT = credentials.code_abonnement;
-    const API_URL = credentials.api_url 
-      || "https://nexpay-653e0b7d7b24.herokuapp.com";
-    const PAYMENT_TYPE = credentials.payment_type || "Wallet";
+    // Credentials depuis configs OU paymethod_credential
+    const creds = data.paymethod_credential?.data 
+      || data.paymethod_credential?.data_sandbox 
+      || {};
+
+    const configs = req.body.configs || {};
+
+    const TOKEN = creds.nexconnect_token 
+      || configs.nexconnect_token 
+      || "";
+    const CODE_ABONNEMENT = creds.code_abonnement 
+      || configs.code_abonnement 
+      || "";
+    const API_URL = creds.api_url 
+      || configs.api_url 
+      || "https://sedad-3j5x.onrender.com/mock";
+    const PAYMENT_TYPE = creds.payment_type 
+      || configs.payment_type 
+      || "Wallet";
 
     const id_facture = String(cart.uuid).substring(0, 20);
 
@@ -26,7 +38,7 @@ module.exports = async (req, res) => {
       body: JSON.stringify({
         id_facture,
         montant: String(cart.balance || cart.total),
-        nom_payeur: user.name + " " + user.lastname,
+        nom_payeur: `${user.name} ${user.lastname}`,
         telephone_payeur: user.cellphone,
         date: new Date().toISOString().split("T")[0],
         code_abonnement: CODE_ABONNEMENT,
@@ -52,7 +64,7 @@ module.exports = async (req, res) => {
         data: {
           action: {
             type: "redirect",
-            redirect_url: `https://sedad-3j5x.onrender.com/public/index.html?montant=${cart.balance || cart.total}&currency=${data.currency}&cart_uuid=${cart.uuid}`
+            redirect_url: `https://sedad-3j5x.onrender.com?montant=${cart.balance || cart.total}&currency=${data.currency}&cart_uuid=${cart.uuid}`
           }
         }
       }
