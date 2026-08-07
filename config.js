@@ -1,13 +1,38 @@
-// config.js
-// Les valeurs sont injectées dynamiquement
-// par Ordering depuis les settings du manifest
-
-module.exports = function getConfig(settings) {
-  return {
-    API_URL: settings.nexconnect_api_url 
-      || "https://nexpay-653e0b7d7b24.herokuapp.com",
-    TOKEN: settings.nexconnect_token,
-    CODE_ABONNEMENT: settings.nexconnect_code_abonnement,
-    PAYMENT_TYPE: settings.nexconnect_payment_type || "Wallet",
-  };
-};
+{
+  "name": "NexConnect Payment",
+  "key": "nexconnect",
+  "integration_type": "payment_method",
+  "models": [
+    {
+      "model_name": "Paymethod",
+      "name": "NexConnect",
+      "gateway": "nexconnect",
+      "version": "v1",
+      "data_template": "[{\"name\":\"Token API\",\"key\":\"nexconnect_token\",\"type\":\"text\",\"required\":true},{\"name\":\"Code Abonnement\",\"key\":\"code_abonnement\",\"type\":\"text\",\"required\":true},{\"name\":\"URL API\",\"key\":\"api_url\",\"type\":\"text\",\"required\":true,\"default_value\":\"https://nexpay-653e0b7d7b24.herokuapp.com\"},{\"name\":\"Type Paiement\",\"key\":\"payment_type\",\"type\":\"text\",\"required\":true,\"default_value\":\"Wallet\"}]"
+    }
+  ],
+  "configs": [
+    {
+      "name": "Sandbox Mode",
+      "key": "sandbox_mode",
+      "default_value": "0",
+      "type": 2
+    }
+  ],
+  "hooks": [
+    {
+      "type": "filter",
+      "hook": "paymethod_nexconnect_pay",
+      "name": "NexConnect Pay",
+      "path": "/hooks/payments/pay",
+      "delay": 0
+    },
+    {
+      "type": "filter",
+      "hook": "paymethod_nexconnect_confirm",
+      "name": "NexConnect Confirm",
+      "path": "/hooks/payments/confirm",
+      "delay": 0
+    }
+  ]
+}
