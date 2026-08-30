@@ -6,7 +6,6 @@
   <title>Paiement Sedad Bank</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: linear-gradient(160deg, #1B2A6B 0%, #2E8B57 100%);
@@ -17,7 +16,6 @@
       justify-content: center;
       padding: 20px;
     }
-
     .logo-box {
       background: white;
       border-radius: 16px;
@@ -26,12 +24,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       margin-bottom: 12px;
     }
-
-    .logo-box img {
-      height: 55px;
-      display: block;
-    }
-
+    .logo-box img { height: 55px; display: block; }
     .badge {
       background: #C9A84C;
       color: white;
@@ -43,7 +36,6 @@
       margin-bottom: 20px;
       letter-spacing: 1px;
     }
-
     .card {
       background: white;
       border-radius: 24px;
@@ -52,7 +44,6 @@
       max-width: 400px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.18);
     }
-
     .expire-row {
       display: flex;
       align-items: center;
@@ -62,33 +53,27 @@
       color: #C9A84C;
       margin-bottom: 14px;
     }
-
     .expire-dot {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       background: #C9A84C;
       border-radius: 50%;
       animation: pulse 1s infinite;
     }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
     }
-
     .card-title {
       font-size: 20px;
       font-weight: 800;
       color: #1B2A6B;
       margin-bottom: 4px;
     }
-
     .card-subtitle {
       font-size: 13px;
       color: #999;
       margin-bottom: 18px;
     }
-
     .amount-box {
       background: linear-gradient(135deg, #e8f5ee, #f0f4ff);
       border-radius: 14px;
@@ -99,7 +84,6 @@
       margin-bottom: 18px;
       border: 1px solid #cce8da;
     }
-
     .amount-label {
       font-size: 11px;
       font-weight: 700;
@@ -107,13 +91,11 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-
     .amount-value {
       font-size: 24px;
       font-weight: 900;
       color: #1B2A6B;
     }
-
     .instructions {
       background: #fffbf0;
       border: 1px solid #f0e0b0;
@@ -121,22 +103,15 @@
       padding: 16px;
       margin-bottom: 20px;
     }
-
-    .instructions ol {
-      padding-left: 18px;
-    }
-
+    .instructions ol { padding-left: 18px; }
     .instructions li {
       font-size: 13px;
       color: #444;
       margin-bottom: 10px;
       line-height: 1.5;
     }
-
     .instructions li:last-child { margin-bottom: 0; }
-
     .instructions strong { color: #2E8B57; }
-
     .code-box {
       display: inline-flex;
       align-items: center;
@@ -150,7 +125,6 @@
       color: #1B2A6B;
       margin-top: 6px;
     }
-
     .copy-btn {
       background: #2E8B57;
       border: none;
@@ -161,14 +135,12 @@
       padding: 4px 10px;
       border-radius: 6px;
     }
-
     .field-label {
       font-size: 13px;
       font-weight: 700;
       color: #333;
       margin-bottom: 6px;
     }
-
     .field-input {
       width: 100%;
       padding: 14px 16px;
@@ -181,12 +153,20 @@
       transition: border 0.2s;
       background: #fafafa;
     }
-
     .field-input:focus {
       border-color: #2E8B57;
       background: white;
     }
-
+    .message-box {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      text-align: center;
+    }
     .btn-pay {
       width: 100%;
       padding: 16px;
@@ -198,12 +178,8 @@
       font-weight: 800;
       cursor: pointer;
       margin-bottom: 12px;
-      letter-spacing: 0.5px;
-      transition: opacity 0.2s;
     }
-
     .btn-pay:active { opacity: 0.8; }
-
     .btn-back {
       width: 100%;
       padding: 15px;
@@ -215,9 +191,6 @@
       font-weight: 700;
       cursor: pointer;
     }
-
-    .btn-back:active { background: #f0f4ff; }
-
     .footer {
       text-align: center;
       margin-top: 18px;
@@ -228,7 +201,6 @@
       justify-content: center;
       gap: 6px;
     }
-
     .footer-badge {
       background: #2E8B57;
       color: white;
@@ -237,7 +209,6 @@
       padding: 2px 8px;
       border-radius: 8px;
     }
-
     .toast {
       position: fixed;
       bottom: 30px;
@@ -253,7 +224,6 @@
       transition: opacity 0.3s;
       pointer-events: none;
     }
-
     .toast.show { opacity: 1; }
   </style>
 </head>
@@ -261,10 +231,7 @@
 
   <div style="text-align:center; margin-bottom:8px">
     <div class="logo-box">
-      <img 
-        src="https://sedad-3j5x.onrender.com/sedad.jpeg"
-        alt="Sedad Bank"
-      />
+      <img src="https://sedad-3j5x.onrender.com/sedad.jpeg" alt="Sedad Bank"/>
     </div>
   </div>
 
@@ -306,14 +273,14 @@
     </div>
 
     <div class="field-label">Numéro Sedad</div>
-    <input 
-      class="field-input" 
-      type="tel" 
-      placeholder="ex: 48110011" 
-      id="telephone" 
-    />
+    <input class="field-input" type="tel"
+      placeholder="ex: 49685735" id="telephone"/>
 
-    
+    <div class="field-label">Code secret</div>
+    <input class="field-input" type="password"
+      placeholder="••••" id="passcode" maxlength="6"/>
+
+    <div class="message-box" id="message"></div>
 
     <button class="btn-pay" onclick="payer()">
       Payer maintenant
@@ -333,16 +300,16 @@
   <div class="toast" id="toast">✅ Code copié !</div>
 
   <script>
-    // ─── Timer 10 minutes ─────────────────────────────
+    // Timer
     let seconds = 600;
     const timerEl = document.getElementById("timer");
-
     const interval = setInterval(() => {
       seconds--;
       if (seconds <= 0) {
         clearInterval(interval);
         timerEl.textContent = "00:00";
         timerEl.style.color = "red";
+        showMessage("⏰ Session expirée. Veuillez recommencer.", "error");
         return;
       }
       const m = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -350,13 +317,14 @@
       timerEl.textContent = `${m}:${s}`;
     }, 1000);
 
-    // ─── Montant depuis URL ───────────────────────────
+    // Montant depuis URL
     const params = new URLSearchParams(window.location.search);
     const montant = params.get("montant") || "--";
-    const currency = params.get("currency") || "MRU";
+    const rawCurrency = params.get("currency") || "MRU";
+    const currency = rawCurrency === "MRO" ? "MRU" : rawCurrency;
     document.getElementById("montant").textContent = `${montant} ${currency}`;
 
-    // ─── Copier code marchand ─────────────────────────
+    // Copier code
     function copyCode() {
       navigator.clipboard.writeText("08375").then(() => {
         const toast = document.getElementById("toast");
@@ -365,16 +333,42 @@
       });
     }
 
-    // ─── Bouton payer ─────────────────────────────────
+    // Messages
+    function showMessage(msg, type) {
+      const colors = {
+        error: "#e74c3c",
+        success: "#2E8B57",
+        info: "#1B2A6B"
+      };
+      const div = document.getElementById("message");
+      div.textContent = msg;
+      div.style.background = colors[type];
+      div.style.display = "block";
+    }
+
+    // Validation et paiement
     function payer() {
-      const tel = document.getElementById("telephone").value;
-      const pass = document.getElementById("passcode").value;
-      if (!tel || !pass) {
-        alert("Veuillez remplir tous les champs.");
+      const tel = document.getElementById("telephone").value.trim();
+      const pass = document.getElementById("passcode").value.trim();
+
+      if (!tel) {
+        showMessage("❌ Veuillez saisir votre numéro Sedad.", "error");
         return;
       }
-      // Ici on peut ajouter l'appel API si nécessaire
-      alert("Paiement en cours de traitement...");
+      if (!/^[234]\d{7}$/.test(tel)) {
+        showMessage("❌ Numéro invalide. Format: 8 chiffres ex: 49685735", "error");
+        return;
+      }
+      if (!pass) {
+        showMessage("❌ Veuillez saisir votre code secret.", "error");
+        return;
+      }
+      if (pass.length < 4) {
+        showMessage("❌ Code secret trop court (minimum 4 chiffres).", "error");
+        return;
+      }
+
+      showMessage("⏳ Paiement en cours de traitement...", "info");
     }
   </script>
 
