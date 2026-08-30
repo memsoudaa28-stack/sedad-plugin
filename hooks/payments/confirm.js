@@ -1,11 +1,11 @@
-// hooks/payments/confirm.js
 module.exports = async (req, res) => {
   try {
     const { data, params } = req.body;
     const cart = data.cart;
 
-    // Données envoyées par notre callback NexConnect
     const nexconnect_data = params.nexconnect_data;
+
+    console.log("[NexConnect] Confirmation reçue:", nexconnect_data);
 
     if (!nexconnect_data || nexconnect_data.status !== "success") {
       return res.status(200).json({
@@ -14,7 +14,6 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Paiement confirmé → status 1 = ordre créé
     return res.status(200).json({
       error: false,
       result: {
@@ -24,6 +23,7 @@ module.exports = async (req, res) => {
     });
 
   } catch (err) {
+    console.error("[NexConnect] Erreur confirmation:", err.message);
     return res.status(200).json({
       error: true,
       result: [`Erreur confirmation: ${err.message}`],
