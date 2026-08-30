@@ -12,8 +12,8 @@
       "gateway": "nexconnect",
       "version": "v1",
       "featured": "[]",
-      "data_template": "[{\"name\":\"Logo\",\"key\":\"image\",\"type\":\"image\",\"required\":false,\"default_value\":\"https:sedad-3j5x.onrender.com/sedad.jpeg\",\"description\":\"Logo shown at checkout\",\"editable\":false}]",
-      "data": "{\"image\":\"https:sedad-3j5x.onrender.com/sedad.jpeg\"}"
+      "data_template": "[{\"name\":\"Logo\",\"key\":\"image\",\"type\":\"image\",\"required\":false,\"default_value\":\"https://sedad-3j5x.onrender.com/sedad.jpeg\",\"description\":\"Logo shown at checkout\",\"editable\":false}]",
+      "data": "{\"image\":\"https://sedad-3j5x.onrender.com/sedad.jpeg\"}"
     }
   ],
   "hooks": [
@@ -39,7 +39,7 @@
       "name": "Token API NexConnect",
       "key": "nexconnect_token",
       "description": "Token d'autorisation Bearer fourni par NexConnect",
-      "default_value": "",
+      "default_value": "iGesoVZN.CmXTfZqe8n4uPGEn79uwMI-CuYxBZqXCC",
       "public": false,
       "type": 7,
       "customizable": false,
@@ -52,7 +52,7 @@
       "name": "Code Abonnement",
       "key": "code_abonnement",
       "description": "Code d'abonnement NexConnect",
-      "default_value": "",
+      "default_value": "deliveryli",
       "public": false,
       "type": 1,
       "customizable": false,
@@ -65,7 +65,7 @@
       "name": "URL API NexConnect",
       "key": "api_url",
       "description": "URL de base de l'API NexConnect",
-      "default_value": "https://nexpay-653e0b7d7b24.herokuapp.com",
+      "default_value": "https://nexpay-653e0b7d7b24.herokuapp.com/api",
       "public": false,
       "type": 1,
       "customizable": false,
