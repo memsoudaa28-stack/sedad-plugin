@@ -4,12 +4,10 @@ const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
-// Page d'accueil
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-// Routes config pour Ordering
 app.get("/config.json", (req, res) => {
   res.sendFile(__dirname + "/config.json");
 });
@@ -22,17 +20,14 @@ app.get("/configs", (req, res) => {
   res.sendFile(__dirname + "/config.json");
 });
 
-// After install
 app.post("/api/after_install", (req, res) => {
   console.log("[NexConnect] Plugin installé :", req.body);
   res.status(200).json({ success: true });
 });
 
-// Hooks paiement
 app.post("/hooks/payments/pay", require("./hooks/payments/pay"));
 app.post("/hooks/payments/confirm", require("./hooks/payments/confirm"));
 
-// Callback NexConnect
 app.post("/callback/nexconnect", async (req, res) => {
   const fetch = require("node-fetch");
   const { id_facture, id_transaction, numero_recu, montant } = req.body;
@@ -60,11 +55,7 @@ app.post("/callback/nexconnect", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`NexConnect plugin running on port ${PORT}`);
-});
-// Mock NexConnect pour tests
+// Mock pour tests
 app.post("/mock/demande_paiement", (req, res) => {
   console.log("[MOCK] Demande paiement reçue:", req.body);
   return res.status(200).json({
@@ -74,10 +65,7 @@ app.post("/mock/demande_paiement", (req, res) => {
   });
 });
 
-app.post("/mock/consultation_statut", (req, res) => {
-  return res.status(200).json({
-    code: 200,
-    statut: "success",
-    numero_recu: req.body.numero_recu
-  });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`NexConnect plugin running on port ${PORT}`);
 });
